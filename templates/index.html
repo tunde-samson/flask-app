@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h5 class="text-center">This simple application collects user expenses details for data analysis project</h5>
+<br/>
+<div class="card mx-auto" style="max-width: 500px">
+
+    <div class="card-body">
+        <h5>Expenses Details</h5>
+        <hr>
+        <form method = "POST">
+            {{ forms.hidden_tag() }}
+            <div class="mb-3">
+            {{ forms.age.label(class="form-label") }}
+            {{ forms.age(class="form-control") }}
+
+            </div>
+            <div class="mb-3">
+            {{ forms.gender.label(class="form-label") }}
+            {{ forms.gender }}
+            </div>
+            <div class="mb-3">
+            {{ forms.total_income.label(class="form-label") }}
+            {{ forms.total_income(class='form-control') }}
+            </div>
+            <div class="mb-3">
+            <label class="form-label">Select Expenses</label><br>
+            {% for subfield in forms.expenses %}
+                <div class="form-check">
+                    {{ subfield(class="form-check-input") }}
+                    {{ subfield.label(class="form-check-label") }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ forms.utilities.label(class="form-label") }}
+            {{ forms.utilities(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ forms.entertainment.label(class="form-label") }}
+            {{ forms.entertainment(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ forms.school_fees.label(class="form-label") }}
+            {{ forms.school_fees(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ forms.shopping.label(class="form-label") }}
+            {{ forms.shopping(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ forms.healthcare.label(class="form-label") }}
+            {{ forms.healthcare(class="form-control") }}
+        </div>
+
+        {{ forms.submit(class="btn btn-warning form-control") }}
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
