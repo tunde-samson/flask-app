@@ -5,9 +5,13 @@ from pymongo import MongoClient
 app=Flask(__name__)
 app.secret_key = 'supersecret'
 
-client = MongoClient("mongodb://localhost:27017/")
+#client = MongoClient("mongodb://localhost:27017/") #for local machine
+client = MongoClient("mongodb://mongodb:27017/") #for ec2 machine using docker container
 db = client["user_database"]
 users_details = db["users"]
+
+
+
 
 @app.route('/', methods=["POST", "GET"])
 def index():
